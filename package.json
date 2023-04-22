@@ -22,7 +22,7 @@
             "explorer/context": [
                 {
                     "command": "extension.openWSI",
-                    "when": "resourceExtname == .ndpi"
+                    "when": "resourceExtname =~ /.ndpi|.svs|.tif|.vms|.vmu|.ndpi|.scn|.mrxs|.tiff|.svslide|.bif/"
                 }
             ]
         }
