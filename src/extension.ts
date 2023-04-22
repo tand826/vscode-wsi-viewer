@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
       filename = filePath.split("/").pop()!;
     }
 
-    const port = await getPort(31791, 32000);
+    const port = await getPort();
 
     const wsiserver = getServer(filePath, port);
     if (!wsiserver) {
@@ -80,15 +80,9 @@ function getNonce() {
   return text;
 }
 
-const getPort = async (start: number, end: number) => {
-  for (let port = start; port < end; port++) {
-    return await portIsUsed(port);
-  }
-  return -1; // return an error code if the port is not found
-};
-
-const portIsUsed = async (port: number): Promise<number> => {
+const getPort = async (): Promise<number> => {
   const server = net.createServer();
+  let port: number;
 
   server.on("listening", () => {
     const address = server.address() as net.AddressInfo;
