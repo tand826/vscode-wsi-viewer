@@ -40,10 +40,10 @@ export function activate(context: vscode.ExtensionContext) {
       }
     );
 
-    const htmlFilePath = vscode.Uri.file(path.join(context.extensionPath, "src/view/index.html"));
+    const htmlFilePath = vscode.Uri.file(context.asAbsolutePath(path.join("view", "index.html")));
     let html = fs.readFileSync(htmlFilePath.fsPath, "utf8");
 
-    const indexjs = vscode.Uri.file(path.join(context.extensionPath, "src/view/index.js"));
+    const indexjs = vscode.Uri.file(context.asAbsolutePath(path.join("view", "index.js")));
     const nonce = getNonce();
 
     // html = html.replace("${indexjs}", ).replace("${nonce}", nonce);
