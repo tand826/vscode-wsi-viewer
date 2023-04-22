@@ -1,25 +1,26 @@
 # vscode-wsi-viewer README
 
-View whole slide images in VSCode.
+View whole slide images (WSI) in VSCode.
 
 ## Features
 
-- features
+- From right click menu, open a WSI file in a new tab.
+- Supported extensions are the ones in [openslide](https://openslide.org/#about-openslide)
+  - "svs", "tif", "vms", "vmu", "ndpi", "scn", "mrxs", "tiff", "svslide", "bif"
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+This extension needs wsiserver for patcing and serving WSI files.
+- Install python>=3.6 and [wsiserver](https://github.com/tand826/wsiserver).
+  - `pip install wsiserver`
+
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- Available settings
+  - TO BE ADDED
+    - wsiviewer.url_template (default: "/{url}:{port}/{z}/{x}/{y}.{format}")
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
 
 ## Known Issues
 
@@ -30,12 +31,3 @@ This extension contributes the following settings:
 ### 1.0.0
 
 Initial release of vscode-wsi-viewer.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
