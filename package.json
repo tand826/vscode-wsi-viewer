@@ -1,8 +1,10 @@
 {
     "name": "vscode-wsi-viewer",
-    "displayName": "vscode-wsi-viewer",
-    "description": "",
+    "displayName": "WSI Viewer",
+    "description": "Open whole slide images directly in vscode tabs.",
     "version": "0.0.1",
+    "publisher": "tand826",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.77.0"
     },
@@ -11,11 +13,20 @@
     ],
     "activationEvents": [],
     "main": "./out/extension.js",
+    "bugs": {
+        "url": "https://github.com/tand826/vscode-wsi-viewer",
+        "email": "takumi.ando826@gmail.com"
+    },
+    "homepage": "https://github.com/tand826/vscode-wsi-viewer",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tand826/vscode-wsi-viewer.git"
+    },
     "contributes": {
         "commands": [
             {
                 "command": "extension.openWSI",
-                "title": "Open WSI with wsi-viewer"
+                "title": "Open WSI with WSI Viewer"
             }
         ],
         "menus": {
