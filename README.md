@@ -1,6 +1,7 @@
 # vscode-wsi-viewer README
 
 View whole slide images (WSI) in VSCode.
+[Extension page](https://marketplace.visualstudio.com/items?itemName=tand826.wsi-viewer)
 
 ## Features
 
