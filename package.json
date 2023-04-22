@@ -1,5 +1,5 @@
 {
-    "name": "vscode-wsi-viewer",
+    "name": "wsi-viewer",
     "displayName": "WSI Viewer",
     "description": "Open whole slide images directly in vscode tabs.",
     "version": "1.0.0",
