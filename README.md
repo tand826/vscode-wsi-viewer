@@ -3,6 +3,8 @@
 View whole slide images (WSI) in VSCode.
 [Extension page](https://marketplace.visualstudio.com/items?itemName=tand826.wsi-viewer)
 
+![](https://github.com/tand826/vscode-wsi-viewer/blob/main/images/sample.gif)
+
 ## Features
 
 - From right click menu, open a WSI file in a new tab.
