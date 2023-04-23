@@ -23,7 +23,8 @@ export function activate(context: vscode.ExtensionContext) {
       filename = filePath.split("/").pop()!;
     }
 
-    const port = await getPort();
+    // const port = await getPort();
+    const port = 31791;
 
     const wsiserver = getServer(filePath, port);
     if (!wsiserver) {
@@ -46,7 +47,6 @@ export function activate(context: vscode.ExtensionContext) {
     const indexjs = vscode.Uri.file(context.asAbsolutePath(path.join("view", "index.js")));
     const nonce = getNonce();
 
-    // html = html.replace("${indexjs}", ).replace("${nonce}", nonce);
     html = html
       .replace("${indexjs}", panel.webview.asWebviewUri(indexjs).toString())
       .replace("${nonce}", nonce)
@@ -68,7 +68,6 @@ export function activate(context: vscode.ExtensionContext) {
   );
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
 
 function getNonce() {
