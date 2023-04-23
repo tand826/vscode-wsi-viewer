@@ -1,9 +1,14 @@
 import { spawn, execSync, ChildProcess } from "child_process";
+import * as fs from "fs";
 import * as vscode from "vscode";
 
 export const getServer = (wsi: string, port: number): ChildProcess => {
-  const wsiserver = spawn("wsiserver", [wsi, "--port", port.toString()]);
-
+  let wsiserver;
+  if (fs.existsSync("wsiserver")) {
+    wsiserver = spawn("./wsiserver", [wsi, "--port", port.toString()]);
+  } else {
+    wsiserver = spawn("wsiserver", [wsi, "--port", port.toString()]);
+  }
   wsiserver.stdout.on("data", (data: Buffer) => {
     console.log(`stdout: ${data}`);
   });
@@ -15,9 +20,9 @@ export const getServer = (wsi: string, port: number): ChildProcess => {
   wsiserver.on("error", async (error: Error) => {
     console.log(`error: ${error.message}`);
     const pwd = execSync("pwd").toString().trim();
-    console.log(`you may need to run 'ln -s $(which wsiserver) ${pwd}/wsiserver'`);
+    vscode.window.showInformationMessage(`you may need to run 'ln -s $(which wsiserver) ${pwd}/wsiserver'`);
     const selection = await vscode.window.showInformationMessage(
-      "Failed to start wsiserver! Make sure wsiserver is also installed!",
+      "Failed to start wsiserver. Make sure wsiserver is also installed. ",
       "Go to wsiserver page"
     );
 
