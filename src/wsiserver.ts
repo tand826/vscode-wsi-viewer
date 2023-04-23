@@ -15,7 +15,7 @@ export const getServer = (wsi: string, port: number): ChildProcess => {
   wsiserver.on("error", async (error: Error) => {
     console.log(`error: ${error.message}`);
     const selection = await vscode.window.showInformationMessage(
-      "vscode-wsi-viewer is installed! Make sure wsiserver is also installed!",
+      "Failed to start wsiserver! Make sure wsiserver is also installed!",
       "Go to wsiserver page"
     );
 
