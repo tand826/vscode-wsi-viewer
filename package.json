@@ -2,7 +2,7 @@
     "name": "wsi-viewer",
     "displayName": "WSI Viewer",
     "description": "Open whole slide images directly in vscode tabs.",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "publisher": "tand826",
     "icon": "images/icon.png",
     "engines": {
