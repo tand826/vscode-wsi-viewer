@@ -1,4 +1,4 @@
-import { spawn, ChildProcess } from "child_process";
+import { spawn, execSync, ChildProcess } from "child_process";
 import * as vscode from "vscode";
 
 export const getServer = (wsi: string, port: number): ChildProcess => {
@@ -14,6 +14,8 @@ export const getServer = (wsi: string, port: number): ChildProcess => {
 
   wsiserver.on("error", async (error: Error) => {
     console.log(`error: ${error.message}`);
+    const pwd = execSync("pwd").toString().trim();
+    console.log(`you may need to run 'ln -s $(which wsiserver) ${pwd}/wsiserver'`);
     const selection = await vscode.window.showInformationMessage(
       "Failed to start wsiserver! Make sure wsiserver is also installed!",
       "Go to wsiserver page"
