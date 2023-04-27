@@ -5,9 +5,9 @@ import * as vscode from "vscode";
 export const getServer = (wsi: string, port: number): ChildProcess => {
   let wsiserver;
   if (fs.existsSync("wsiserver")) {
-    wsiserver = spawn("./wsiserver", [wsi, "--port", port.toString()]);
+    wsiserver = spawn("./wsiserver", [wsi, "--host", "localhost", "--port", port.toString()]);
   } else {
-    wsiserver = spawn("wsiserver", [wsi, "--port", port.toString()]);
+    wsiserver = spawn("wsiserver", [wsi, "--host", "localhost", "--port", port.toString()]);
   }
   wsiserver.stdout.on("data", (data: Buffer) => {
     console.log(`stdout: ${data}`);
