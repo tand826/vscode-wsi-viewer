@@ -1,4 +1,4 @@
-const url = "http://0.0.0.0";
+const url = "http://localhost";
 
 let view;
 

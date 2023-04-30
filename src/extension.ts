@@ -3,6 +3,7 @@ import * as path from "path";
 import * as fs from "fs";
 import * as os from "os";
 import * as net from "net";
+import { isFreePort } from "find-free-ports";
 
 import { getServer } from "./wsiserver";
 
@@ -23,13 +24,22 @@ export function activate(context: vscode.ExtensionContext) {
       filename = filePath.split("/").pop()!;
     }
 
-    // const port = await getPort();
-    const port = 31791;
+    const ports: string | undefined = vscode.workspace.getConfiguration("wsiviewer").get("ports");
+    if (!ports) {
+      vscode.window.showErrorMessage("Cannot find ports settings.");
+      return;
+    }
+
+    const port = await getPort(ports.split(",").map((port) => parseInt(port)));
+    if (port === -1) {
+      vscode.window.showErrorMessage("Cannot find free port.");
+      return;
+    }
 
     const wsiserver = getServer(filePath, port);
     if (!wsiserver) {
       vscode.window.showErrorMessage("Cannot find wsiserver!");
-      return false;
+      return;
     }
 
     const panel = vscode.window.createWebviewPanel(
@@ -79,25 +89,27 @@ function getNonce() {
   return text;
 }
 
-const getPort = async (): Promise<number> => {
-  const server = net.createServer();
-  let port: number;
+const getPort = async (ports: Array<number>) => {
+  for (const port of ports) {
+    console.log(`Check port ${port}`);
+    if (await isFreePort(port)) {
+      return port;
+    }
+  }
+  return -1;
+};
 
-  server.on("listening", () => {
-    const address = server.address() as net.AddressInfo;
-    port = address.port;
-    server.close();
-  });
+const localPortIsFree = async (port: number) => {
+  return new Promise((resolve) => {
+    const server = net.createServer();
 
-  return new Promise<number>((resolve, reject) => {
-    server.on("close", () => {
-      if (port) {
-        resolve(port);
-      } else {
-        reject(new Error("Port not found"));
-      }
+    server.on("error", () => {
+      resolve(false);
     });
-    server.on("error", (err) => reject(err));
-    server.listen(0, "127.0.0.1");
+
+    server.listen(port, () => {
+      server.close();
+      resolve(true);
+    });
   });
 };
