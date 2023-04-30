@@ -21,22 +21,25 @@ This extension needs wsiserver for patcing and serving WSI files.
 If you want to open a WSI in a remote host, you need to
 
 - install wsiserver in the remote host.
-- set port forwarding to the host. wsiserver runs on port 31791 by default. So you need to close a WSI tab before opening another WSI.
+- set port forwarding to the host. wsiserver runs on port 31791 by default. If 31791 is occupied by other process, wsi-viewer will try to use 31792, 31793, 31794, 31795.
   - e.g. If you are opening the WSI in "remoteHostA" which is in your local network and has 192.168.50.10, in ssh config file,
     ```
     Host remoteHostA
         HostName 192.168.50.10
         User tand826
-        LocalForward 31791 192.168.50.10:31791
-        # LocalForward 31792 192.168.50.10:31792
+        LocalForward 31791 localhost:31791
+        LocalForward 31792 localhost:31792
+        LocalForward 31793 localhost:31793
+        LocalForward 31794 localhost:31794
+        LocalForward 31795 localhost:31795
     ```
 
 ## Extension Settings
 
 - Available settings
-  - TO BE ADDED
-    - wsiviewer.url_template (default: "/{url}:{port}/{z}/{x}/{y}.{format}")
-    - wsiviewer.ports (default: 31791,31792)
+  - wsiviewer.ports (default: 31791,31792,31793,31794,31795)
+  - [TO BE ADDED] wsiviewer.url_template (default: "/{url}:{port}/{z}/{x}/{y}.{format}")
+
 
 ## Known Issues
 
@@ -47,3 +50,23 @@ If you want to open a WSI in a remote host, you need to
 ### 1.0.0
 
 Initial release of vscode-wsi-viewer.
+
+### 1.1.0
+
+Enabled for remote servers.
+
+### 1.1.1
+
+Error message updated for wsiserver path.
+
+### 1.1.3
+
+README updated with new sample images.
+
+### 1.1.4
+
+User can open multiple wsis at a time with portforwarding settings.
+
+### 1.1.5
+
+Code visibility changed to public with some new instructions in README.
