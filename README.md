@@ -70,3 +70,7 @@ User can open multiple wsis at a time with portforwarding settings.
 ### 1.1.5
 
 Code visibility changed to public with some new instructions in README.
+
+### 1.1.6
+
+README updated with an animated gif.
