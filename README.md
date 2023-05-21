@@ -3,7 +3,7 @@
 View whole slide images (WSI) in VSCode.
 [Extension page](https://marketplace.visualstudio.com/items?itemName=tand826.wsi-viewer)
 
-![](https://github.com/tand826/vscode-wsi-viewer/blob/main/images/sample.gif)
+![](https://raw.githubusercontent.com/tand826/vscode-wsi-viewer/main/images/sample.gif)
 
 ## Features
 
@@ -71,6 +71,6 @@ User can open multiple wsis at a time with portforwarding settings.
 
 Code visibility changed to public with some new instructions in README.
 
-### 1.1.6
+### 1.1.7
 
 README updated with an animated gif.
