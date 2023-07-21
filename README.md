@@ -75,6 +75,6 @@ Code visibility changed to public with some new instructions in README.
 
 README updated with an animated gif.
 
-### 1.1.8
+### 1.1.9
 
 Security update.
