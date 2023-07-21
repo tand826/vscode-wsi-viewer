@@ -1,4 +1,4 @@
-# vscode-wsi-viewer README
+# vscode-wsi-viewer
 
 View whole slide images (WSI) in VSCode.
 [Extension page](https://marketplace.visualstudio.com/items?itemName=tand826.wsi-viewer)
@@ -16,6 +16,7 @@ View whole slide images (WSI) in VSCode.
 This extension needs wsiserver for patcing and serving WSI files.
 
 - Install python>=3.6 and [wsiserver](https://github.com/tand826/wsiserver).
+  - `apt install openslide-tools`
   - `pip install wsiserver`
 
 If you want to open a WSI in a remote host, you need to
@@ -39,7 +40,6 @@ If you want to open a WSI in a remote host, you need to
 - Available settings
   - wsiviewer.ports (default: 31791,31792,31793,31794,31795)
   - [TO BE ADDED] wsiviewer.url_template (default: "/{url}:{port}/{z}/{x}/{y}.{format}")
-
 
 ## Known Issues
 
@@ -74,3 +74,7 @@ Code visibility changed to public with some new instructions in README.
 ### 1.1.7
 
 README updated with an animated gif.
+
+### 1.1.8
+
+Security update.
