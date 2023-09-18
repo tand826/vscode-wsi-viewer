@@ -57,11 +57,25 @@ export function activate(context: vscode.ExtensionContext) {
     const indexjs = vscode.Uri.file(context.asAbsolutePath(path.join("view", "index.js")));
     const nonce = getNonce();
 
+    const url: string | undefined = vscode.workspace.getConfiguration("wsiviewer").get("url");
+    if (url === undefined) {
+      vscode.window.showErrorMessage("Cannot find url settings.");
+      return;
+    }
+
+    const template: string | undefined = vscode.workspace.getConfiguration("wsiviewer").get("template");
+    if (template === undefined) {
+      vscode.window.showErrorMessage("Cannot find template settings.");
+      return;
+    }
+
     html = html
       .replace("${indexjs}", panel.webview.asWebviewUri(indexjs).toString())
       .replace("${nonce}", nonce)
       .replace("${nonce}", nonce)
-      .replace("${port}", port.toString());
+      .replace("${port}", port.toString())
+      .replace("${url}", url)
+      .replace("${template}", template);
 
     panel.webview.html = html;
 

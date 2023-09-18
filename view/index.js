@@ -1,8 +1,6 @@
-const url = "http://localhost";
-
 let view;
 
-const getProps = async (port) => {
+const getProps = async (url, port) => {
   for (let i = 0; i < 10; i++) {
     try {
       const response = await fetch(`${url}:${port}/props`);
@@ -33,16 +31,25 @@ const getCenter = (zoom2size) => {
   return view.unproject(L.point(Number(slideSize.x / 2), Number(slideSize.y / 2)), zoom);
 };
 
+const loadConfiguration = async (title) => {
+  // proeprties of vscode.workspace.getConfiguration("wsiviewer") is set in document.title
+  return JSON.parse(title);
+};
+
 const initview = async () => {
-  const port = document.title;
-  const props = await getProps(port);
+  const config = await loadConfiguration(document.title);
+  const url = config.url;
+  const port = config.port;
+  const props = await getProps(url, port);
   view = L.map("viewer", {
     center: [0, 0],
     zoom: props.default_zoom,
     crs: L.CRS.Simple,
     tileSize: props.tile_size,
   });
-  L.tileLayer(`${url}:${port}/tile/{z}/{x}/{y}`).addTo(view);
+
+  const template = config.template.replace("{url}", url).replace("{port}", port);
+  L.tileLayer(template).addTo(view);
 
   view.on("zoomend", (e) => {
     resetBounds(props.zoom2size);
