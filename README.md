@@ -38,8 +38,12 @@ If you want to open a WSI in a remote host, you need to
 ## Extension Settings
 
 - Available settings
+  - wsiviewer.url (default: "http://localhost")
+    - url of patching server
   - wsiviewer.ports (default: 31791,31792,31793,31794,31795)
-  - [TO BE ADDED] wsiviewer.url_template (default: "/{url}:{port}/{z}/{x}/{y}.{format}")
+    - ports to be used for patching server
+  - wsiviewer.template (default: "/{url}:{port}/tile/{z}/{x}/{y}")
+    - the template of the url to be used to request tiles from patching server
 
 ## Known Issues
 

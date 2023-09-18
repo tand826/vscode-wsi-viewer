@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv=" content-security-policy"
       content="default-src 'none'; script-src 'nonce-${nonce}' 'self' https://unpkg.com/leaflet@1.9.3; style-src https://unpkg.com/leaflet@1.9.3; connect-src 'self' http://127.0.0.1:*">
-    <title>${port}</title>
+    <title>{"url":"${url}","port":"${port}","template":"${template}"}</title>
 
   </head>
 
   <body>
-    <div id="viewer" class="${port}" style="width: 100vw; height: 100vh;"></div>
+    <div id="viewer" style="width: 98vw; height: 100vh;"></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
       integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"

@@ -40,15 +40,20 @@
         "configuration": {
             "title": "WSI Viewer",
             "properties": {
-                "wsiviewer.url_template": {
+                "wsiviewer.url": {
                     "type": "string",
-                    "default": "/{url}:{port}/{z}/{x}/{y}.{format}",
-                    "description": "URL template for WSI Viewer."
+                    "default": "http://localhost",
+                    "description": "URL of the patching server."
                 },
                 "wsiviewer.ports": {
                     "type": "string",
                     "default": "31791,31792,31793,31794,31795",
                     "description": "Ports to run wsiserver. If a port is occupied by another process, the next port will be used."
+                },
+                "wsiviewer.template": {
+                    "type": "string",
+                    "default": "{url}:{port}/tile/{z}/{x}/{y}",
+                    "description": "URL template for WSI Viewer."
                 }
             }
         }
