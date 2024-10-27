@@ -82,3 +82,7 @@ README updated with an animated gif.
 ### 1.1.9
 
 Security update.
+
+### 1.1.10
+
+Security update.
